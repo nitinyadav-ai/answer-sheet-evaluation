@@ -66,8 +66,13 @@ def _require_password_when_public():
         {"WWW-Authenticate": 'Basic realm="AI Answer Evaluator"'},
     )
 
-UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
-REPORTS_FOLDER = os.path.expanduser("~/Evaluation Reports")
+if os.environ.get("VERCEL"):
+    UPLOAD_FOLDER = "/tmp/uploads"
+    REPORTS_FOLDER = "/tmp/Evaluation Reports"
+else:
+    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
+    REPORTS_FOLDER = os.path.expanduser("~/Evaluation Reports")
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(REPORTS_FOLDER, exist_ok=True)
 
