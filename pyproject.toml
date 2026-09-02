@@ -2,6 +2,24 @@
 name = "answer-sheet-evaluation"
 version = "0.1.0"
 requires-python = ">=3.12"
+dependencies = [
+    "Flask==3.1.1",
+    "Flask-Cors==6.0.5",
+    "Werkzeug==3.1.8",
+    "MarkupSafe==3.0.3",
+    "PyMuPDF==1.25.5",
+    "opencv-python-headless==4.11.0.86",
+    "numpy==2.2.5",
+    "pillow==11.2.1",
+    "pytesseract==0.3.13",
+    "PyPDF2==3.0.1",
+    "python-docx==1.2.0",
+    "python-dotenv==1.1.0",
+    "psycopg2-binary>=2.9.9",
+    "fpdf2==2.8.7",
+    "openai==2.44.0",
+    "Markdown==3.7"
+]
 
 [tool.vercel]
 entrypoint = "evaluation_app.app:app"
