@@ -1,0 +1,27 @@
+# Python deps for the AI Answer Evaluator, pinned to the versions the app is tested against
+# (235 tests green locally). Container-appropriate variants:
+#   - opencv-python-headless : no GUI/X11 libs (smaller, server-safe) — code only uses cv2 headless
+#   - psycopg2-binary        : no libpq build toolchain needed
+# NOTE: PDF rasterisation is done by PyMuPDF (fitz), which bundles its own engine, so Poppler is NOT
+# required. PDF reports are built with fpdf2 (pure-Python).
+Flask==3.1.1
+Flask-Cors==6.0.5
+Werkzeug==3.1.8
+MarkupSafe==3.0.3
+# gunicorn is POSIX-only (it imports fcntl and forks), so it is skipped on native Windows -- where it
+# would install happily and then fail at import. It is still used everywhere it actually runs: Docker
+# (Linux containers, incl. Docker Desktop on Windows) and any POSIX host. On native Windows run the app
+# directly with `python evaluation_app/app.py`, which serves via Flask's threaded server.
+gunicorn==23.0.0; sys_platform != "win32"
+PyMuPDF==1.25.5
+opencv-python-headless==4.11.0.86
+numpy==2.2.5
+pillow==11.2.1
+pytesseract==0.3.13
+PyPDF2==3.0.1
+python-docx==1.2.0
+python-dotenv==1.1.0
+psycopg2-binary>=2.9.9
+fpdf2==2.8.7
+openai==2.44.0
+Markdown==3.7

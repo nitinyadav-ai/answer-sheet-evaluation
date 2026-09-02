@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  LaunchAgent: archive every completed evaluation report to a local folder on this Mac, every 5 minutes.
+  It only reads output/ and writes ~/Evaluation Report Archive/ (+ ~/.report_sync/ state+log) -- no network.
+  Install: see docs/REPORT-SYNC.md. Adjust the two absolute paths below if the repo ever moves.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.methdai.report-sync</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/nidhishchettri/Desktop/Answer_Evaluator_OpenClaw Test OpenSource/scripts/report_sync.py</string>
+        <string>--once</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/nidhishchettri/Desktop/Answer_Evaluator_OpenClaw Test OpenSource</string>
+    <key>StartInterval</key>
+    <integer>300</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/nidhishchettri/.report_sync/sync.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/nidhishchettri/.report_sync/sync.log</string>
+</dict>
+</plist>

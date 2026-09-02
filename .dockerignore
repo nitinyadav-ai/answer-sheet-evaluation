@@ -1,0 +1,28 @@
+# Keep the image small and NEVER bake secrets or mutable state into it.
+.git
+.gitignore
+.gitattributes
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Secrets — the API key comes from the platform's env/secret store at runtime, never the image.
+.env
+.env.*
+
+# Virtualenvs / local tooling
+.venv/
+venv/
+node_modules/
+.pytest_cache/
+.claude/
+
+# Runtime state + heavy artifacts — recreated at runtime (on /data if a persistent disk exists).
+output/
+evaluation_app/uploads/
+Evaluation Reports/
+
+# Tests + dev-only
+tests/
+*.log
+.DS_Store
