@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "evaluation_app.app:app"
