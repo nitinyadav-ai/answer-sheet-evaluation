@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "evaluation_app/app.py",
+      "use": "@vercel/python",
+      "config": { "includeFiles": ["scripts/**", "skills/**", "requirements.txt"] }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "evaluation_app/app.py" }
+  ]
+}
